@@ -17,3 +17,13 @@ afterAll(async ()=>{
     await db.destroy();
 })
 
+describe('characters model', () =>{
+    describe('create()', ()=>{
+        test('inserts the provided characters', async () =>{ 
+            await Characters.create({'name':'NoobDestroya','class':'death knight',"specialization":"frost","item level":200})
+            await Characters.create({'name':'Munchon','class':'priest',"specialization":"shadow","item level":210})
+            const characters = await db('characters');
+            expect(characters).toHaveLength(2);
+        })
+    })
+})
