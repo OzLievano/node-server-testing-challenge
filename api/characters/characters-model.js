@@ -7,7 +7,7 @@ module.exports = {
 }
 
 async function get(){
-    return null;
+    return await db('characters');
 }
 
 async function create(character){
