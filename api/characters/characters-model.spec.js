@@ -32,4 +32,19 @@ describe('characters model', () =>{
             expect(character.name).toBe('Moremana')
         })
     })
+
+    describe('remove()',()=>{
+        test('removes the provided id', async()=>{
+            await Characters.remove(1)
+            const characters = await db('characters');
+            expect(characters).toHaveLength(0);
+        })
+        test('no removal with invalid id', async()=>{
+            //id = 1;
+            await Characters.create({'name':'Munchon','class':'priest',"specialization":"shadow","item level":210})
+            await Characters.remove(10);
+            const characters = await db('characters');
+            expect(characters).toHaveLength(1)
+        })
+    })
 })
