@@ -25,5 +25,11 @@ describe('characters model', () =>{
             const characters = await db('characters');
             expect(characters).toHaveLength(2);
         })
+
+        test('returns the character inserted', async()=>{
+            let character = await Characters.create({'name':'Moremana','class':'paladin',"specialization":"holy","item level":220})
+
+            expect(character.name).toBe('Moremana')
+        })
     })
 })
