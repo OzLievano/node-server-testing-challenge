@@ -5,6 +5,8 @@ const server = express();
 server.use(express.json());
 
 
-server.get('/', testIfServerUp(req,res){
+server.get('/', function testIfServerUp(req,res){
     res.status(200).json({api:'server is up and running.'})
 })
+
+module.exports = server;
